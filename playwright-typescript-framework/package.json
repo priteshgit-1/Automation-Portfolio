@@ -1,0 +1,21 @@
+{
+  "name": "playwright-typescript-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "allure-playwright": "^3.10.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "dotenv": "^17.4.2",
+    "exceljs": "^4.4.0"
+  }
+}
