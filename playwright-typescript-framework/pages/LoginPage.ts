@@ -1,25 +1,43 @@
-import { Locator, Page } from '@playwright/test';
+import {Page, Locator} from '@playwright/test';
 
 export class LoginPage {
   readonly page: Page;
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
-  readonly loginButton: Locator;
+  readonly loginButton: Locator;  
+  readonly errorMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.usernameInput = page.locator('#user-name');
+    this.usernameInput = page.locator('#user-name'); 
     this.passwordInput = page.locator('#password');
     this.loginButton = page.locator('#login-button');
+    this.errorMessage = page.locator('#error-message');
   }
 
-  async goto() {
-    await this.page.goto('https://www.saucedemo.com/');
+  async navigateToLogin(){
+    await this.page.goto('/');
   }
 
-  async login(username: string, password: string) {
+  async enterUsername(username: string){
     await this.usernameInput.fill(username);
+  }
+
+  async enterPassword(password: string){
     await this.passwordInput.fill(password);
-    await this.loginButton.click();
+  }
+
+  async clickLogin(){
+    await this.loginButton.click(); 
+  }
+
+  async login(username: string, password: string){
+    await this.enterUsername(username);
+    await this.enterPassword(password);
+    await this.clickLogin();
+  }
+
+  async getErrorMessage(): Promise<string>{
+    return await this.errorMessage.textContent() ?? '';
   }
 }
