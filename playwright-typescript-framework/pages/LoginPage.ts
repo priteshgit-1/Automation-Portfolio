@@ -12,7 +12,7 @@ export class LoginPage {
     this.usernameInput = page.locator('#user-name'); 
     this.passwordInput = page.locator('#password');
     this.loginButton = page.locator('#login-button');
-    this.errorMessage = page.locator('#error-message');
+    this.errorMessage = page.locator('[data-test="error"]');
   }
 
   async navigateToLogin(){
@@ -40,4 +40,9 @@ export class LoginPage {
   async getErrorMessage(): Promise<string>{
     return await this.errorMessage.textContent() ?? '';
   }
+
+  async loginExpectingFailure(username:string, password:string){
+    await this.login(username, password);
+  }
+
 }

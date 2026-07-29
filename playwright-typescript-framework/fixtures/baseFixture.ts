@@ -1,11 +1,11 @@
 import { test as base } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 
-export type TestFixtures = {
+export type MyFixtures = {
   loginPage: LoginPage;
 };
 
-export const test = base.extend<TestFixtures>({
+export const test = base.extend<MyFixtures>({
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
