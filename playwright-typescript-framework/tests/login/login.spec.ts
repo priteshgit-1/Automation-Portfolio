@@ -7,9 +7,10 @@ test.describe('Login Module',()=>{
     await loginPage.navigateToLogin();
   });
 
-  test('Valid Login',async({page, loginPage})=>{
+  test('Valid Login',async({page, loginPage, inventoryPage})=>{
     await loginPage.login(users.validUser.username, users.validUser.password);
-    await expect(page).toHaveURL('/inventory.html');
+    await inventoryPage.verifyInventoryPageLoaded();
+    expect(await inventoryPage.getPageTitle()).toBe('Products');
   });
 
   test('Invalid Username and Valid Password',async({loginPage})=>{
