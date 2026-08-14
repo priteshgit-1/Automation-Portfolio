@@ -50,4 +50,8 @@ export class InventoryPage extends BasePage {
     async getProduct(productName:string):Promise<Locator>{
         return this.page.locator('.inventory_item_name', { hasText: productName });
     }
+
+    async openCart(){
+        await this.shoppingCart.click();
+    }
 }
