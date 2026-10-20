@@ -13,12 +13,15 @@ export const test = base.extend<MyFixtures>({
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
+
   inventoryPage: async ({page}, use)=>{
     await use(new InventoryPage(page));
   },
+
   cartPage: async ({page}, use)=>{
     await use(new CartPage(page));
   },
+  
 });
 
 export { expect } from '@playwright/test';
