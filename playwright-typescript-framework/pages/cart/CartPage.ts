@@ -18,8 +18,9 @@ export class CartPage extends BasePage {
         await this.waitForElement(this.cartTitle);
     }
 
-    async checkout() {
-        await this.clickElement(this.checkoutButton);
+    async checkout(): Promise<void> {
+        await this.page.getByRole('button', { name: 'Checkout' }).click();
+        await this.page.waitForURL(/checkout-step-one\.html/);
     }
 
     async getCartItem(productName: string): Promise<Locator> {
